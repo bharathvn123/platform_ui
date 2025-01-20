@@ -1,0 +1,68 @@
+{
+    "filters": [
+      {
+        "id": "segment",
+        "type": "dropdown",
+        "label": "Segment",
+        "options": ["All", "Segment1", "Segment2", "Segment3"],
+        "default": "All"
+      },
+      {
+        "id": "subSegment",
+        "type": "dropdown",
+        "label": "Sub-Segment",
+        "options": ["All", "SubSegment1", "SubSegment2"],
+        "default": "All"
+      },
+      {
+        "id": "application",
+        "type": "dropdown",
+        "label": "Application",
+        "options": ["FIRE TRUCK", "Application1", "Application2"],
+        "default": "FIRE TRUCK"
+      },
+      {
+        "id": "customerName",
+        "type": "dropdown",
+        "label": "Customer Name",
+        "options": ["All", "Customer1", "Customer2"],
+        "default": "All"
+      },
+      {
+        "id": "customerSpec",
+        "type": "dropdown",
+        "label": "Customer_Spec",
+        "options": ["All", "Spec1", "Spec2"],
+        "default": "All"
+      },
+      {
+        "id": "mainReason",
+        "type": "dropdown",
+        "label": "Main Reason (Within Customer)",
+        "options": ["All", "Reason1", "Reason2"],
+        "default": "All"
+      },
+      {
+        "id": "engine",
+        "type": "dropdown",
+        "label": "Engine",
+        "options": ["L9", "Engine1", "Engine2"],
+        "default": "L9"
+      },
+      {
+        "id": "certification",
+        "type": "dropdown",
+        "label": "Certification",
+        "options": ["EPA21", "Certification1", "Certification2"],
+        "default": "EPA21"
+      },
+      {
+        "id": "hp",
+        "type": "dropdown",
+        "label": "HP",
+        "options": ["450", "500", "600"],
+        "default": "450"
+      }
+    ]
+  }
+  

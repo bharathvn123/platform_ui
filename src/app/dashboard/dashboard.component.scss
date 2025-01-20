@@ -1,0 +1,76 @@
+// .dropdown-container {
+//     margin-bottom: 1rem;
+//   }
+  
+//   label {
+//     display: block;
+//     font-weight: bold;
+//     margin-bottom: 0.5rem;
+//   }
+  
+//   select {
+//     width: 100%;
+//     padding: 0.5rem;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//   }
+
+.body{
+  // margin: auto;
+  margin-left: 20rem;
+}
+
+.dropdown-container {
+    display: inline-block; /* Place containers inline */
+    margin-right: 15px; /* Add spacing between dropdowns */
+    vertical-align: top; /* Align the dropdowns properly */
+  }
+  
+  label {
+    display: block; /* Ensure the label is above the dropdown */
+    margin-bottom: 5px; /* Add spacing between the label and the dropdown */
+    font-weight: bold; /* Optional: Make labels bold */
+  }
+  
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px; /* Set a minimum width for consistency */
+  }
+  
+  .chart-container {
+    margin-top: 20px;
+    width: 100%;
+    height: 400px;
+  }
+  
+
+  .kpi-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .kpi-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .kpi-label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .kpi-value {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
