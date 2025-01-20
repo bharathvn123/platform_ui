@@ -96,4 +96,8 @@ export class DashboardComponent {
   adminPage() {
     this.router.navigate(['/admin']);
   }
+
+  wedgetPage() {
+    this.router.navigate(['/wedget']);
+  }
 }

@@ -11,29 +11,27 @@
   </select>
 </div> -->
 
+@if(filters.length){ @for ( filter of filters; track $index) {
+<div class="dropdown-container">
+  <label [for]="filter.id">{{ filter.label }}</label>
+  <select
+    [id]="filter.id"
+    [(ngModel)]="selectedValues[filter.id]"
+    (change)="onValueChange(filter.id, $event)"
+  >
+    <option *ngFor="let option of filter.options" [value]="option">
+      {{ option }}
+    </option>
+  </select>
+</div>
+} }
 
-@if(filters.length){
-  @for ( filter of filters; track $index) {
-    <div class="dropdown-container">
-      <label [for]="filter.id">{{ filter.label }}</label>
-      <select
-        [id]="filter.id"
-        [(ngModel)]="selectedValues[filter.id]"
-        (change)="onValueChange(filter.id, $event)"
-      >
-        <option *ngFor="let option of filter.options" [value]="option">
-          {{ option }}
-        </option>
-      </select>
-    </div>
-  }
- }
+<button mat-fab extended (click)="adminPage()">Admin</button>
+<button class="mx-4" mat-fab extended (click)="wedgetPage()">
+  Widget Page
+</button>
+<!-- <button mat-fab extended routerLink="/admin">Admin</button> -->
 
- <button mat-fab extended (click)="adminPage()">Admin</button>
- <!-- <button mat-fab extended routerLink="/admin">Admin</button> -->
- 
-
- 
 <!-- <div *ngIf="filters?.length">
     <div *ngFor="let filter of filters" class="dropdown-container">
       <label [for]="filter.id">{{ filter.label }}</label>
@@ -49,16 +47,13 @@
     </div>
   </div> -->
 
-  <div class="kpi-container">
-    @for(card of kpiCards; track $index) {
-      <div class="kpi-card" [ngStyle]="card.style">
-        <div class="kpi-label">{{ card.label }}</div>
-        <div class="kpi-value">{{ card.value }}</div>
-      </div>
-    }
-    
+<div class="kpi-container">
+  @for(card of kpiCards; track $index) {
+  <div class="kpi-card" [ngStyle]="card.style">
+    <div class="kpi-label">{{ card.label }}</div>
+    <div class="kpi-value">{{ card.value }}</div>
   </div>
+  }
+</div>
 
-  
-  
-  <div echarts [options]="chartOptions" class="chart-container"></div>
+<div echarts [options]="chartOptions" class="chart-container"></div>

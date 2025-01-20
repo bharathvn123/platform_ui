@@ -1,19 +1,23 @@
-import { provideRouter, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WidgetComponent } from './widget/widget.component';
 
 export const routes: Routes = [
-
   {
     path: 'admin',
     component: AdminComponent,
   },
 
   {
+    path: 'wedget',
+    component: WidgetComponent,
+  },
+
+  {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: '**',
