@@ -1,13 +1,35 @@
 <!-- <h6>Basic mat-select</h6> -->
-<mat-form-field>
-  <mat-label>X-axis</mat-label>
-  <mat-select [(value)]="selectedValue" (selectionChange)="onSelectChange($event)">
-      @for (food of columnNames; track food) {
-      <mat-option [value]="food">{{ food }}</mat-option>
-      }
-
+<mat-form-field class="mx-4">
+  <mat-label>Table</mat-label>
+  <mat-select
+    [(value)]="selectedTableValue"
+    (selectionChange)="onSelectTableChange($event)"
+  >
+    @for (food of TableNames; track food) {
+    <mat-option [value]="food">{{ food }}</mat-option>
+    }
   </mat-select>
-
- 
 </mat-form-field>
+
+<mat-form-field class="mx-4">
+  <mat-label>X-axis</mat-label>
+  <mat-select
+    [(value)]="selectedValue"
+    (selectionChange)="onSelectChange($event)"
+  >
+    @for (food of columnNames; track food) {
+    <mat-option [value]="food">{{ food }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+<mat-radio-group
+  [(ngModel)]="ss"
+  (change)="onSelectionChange($event)"
+  aria-label="Select an option"
+>
+  <mat-radio-button value="1">Bar Chart</mat-radio-button>
+  <mat-radio-button value="2">Line Chart</mat-radio-button>
+</mat-radio-group>
+
 <div echarts [options]="chartOptions" class="chart-container"></div>

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-
+import { MatRadioModule } from '@angular/material/radio';
 interface Food {
   value: string;
   viewValue: string;
@@ -19,7 +19,7 @@ interface Food {
     MatSelectModule,
     FormsModule,
     CommonModule,
-    
+    MatRadioModule,
   ],
   templateUrl: './widget.component.html',
   styleUrl: './widget.component.scss',
@@ -28,7 +28,9 @@ export class WidgetComponent implements OnInit {
   constructor(private service: WidgetService) {}
 
   selectedValue: string = 'Engine Types';
-
+  selectedTableValue: string = 'Table 1';
+  ChartType: string = 'bar';
+  ss: string = '1';
 
   chartOptions: any;
   salesData = [];
@@ -37,17 +39,20 @@ export class WidgetComponent implements OnInit {
     // {value: 'pizza-1', viewValue: 'Pizza'},
     // {value: 'tacos-2', viewValue: 'Tacos'},
   ];
-  xAxisLable : string[] = [	'B6.7'
-    ,'L9'
-    ,'X12'
-    ,'F3.8'
-    ,'B4.5'
-    ,'X15'
-    ,'F2.8'
-    ,'other'
-    ,'G12'];
+  xAxisLable: string[] = [
+    'B6.7',
+    'L9',
+    'X12',
+    'F3.8',
+    'B4.5',
+    'X15',
+    'F2.8',
+    'other',
+    'G12',
+  ];
   engineTypes: string[] = [];
   columnNames: string[] = [];
+  TableNames: string[] = ['Table 1', 'Table 2'];
   ngOnInit(): void {
     this.service.getTableData().subscribe((data: any) => {
       this.salesData = data;
@@ -64,8 +69,13 @@ export class WidgetComponent implements OnInit {
     this.getChart();
   }
 
-  getChart(){
+  getChart() {
     this.service.getChartConfig().subscribe((config: any) => {
+      this.chartOptions = this.mapConfigToECharts(config.chart);
+    });
+  }
+  get2ndChart() {
+    this.service.get2ndChartConfig().subscribe((config: any) => {
       this.chartOptions = this.mapConfigToECharts(config.chart);
     });
   }
@@ -89,7 +99,6 @@ export class WidgetComponent implements OnInit {
         // data: config.xAxis.categories,
         // name: this.xAxisLable,
         data: this.xAxisLable,
-       
       },
       yAxis: {
         type: 'value',
@@ -101,7 +110,8 @@ export class WidgetComponent implements OnInit {
       },
       series: config.series.map((s: any) => ({
         name: s.name,
-        type: config.type,
+        type: this.ChartType,
+        // type: config.type,
         data: s.data,
         stack: config.stacked ? 'total' : null,
         itemStyle: {
@@ -123,7 +133,31 @@ export class WidgetComponent implements OnInit {
     this.xAxisLable = this.salesData.map((item) => item[this.selectedValue]);
     // console.table(this.xAxisLable);
 
-this.getChart();
+    this.getChart();
+  }
 
+  onSelectTableChange(event: MatSelectChange): void {
+    this.selectedTableValue = event.value; // Get the selected value
+    console.log('Selected  Table Value:', this.selectedTableValue);
+
+    if (this.selectedTableValue === 'Table 1') {
+      this.getChart();
+    } else {
+      this.get2ndChart();
+    }
+  }
+
+  onSelectionChange(event: any): void {
+    if (event.value === '1') {
+      this.ChartType = 'bar';
+    } else {
+      this.ChartType = 'line';
+    }
+
+    if (this.selectedTableValue === 'Table 1') {
+      this.getChart();
+    } else {
+      this.get2ndChart();
+    }
   }
 }
