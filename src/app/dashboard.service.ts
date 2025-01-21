@@ -236,7 +236,7 @@ export class DashboardService {
         // "title": "Sales by Engine & Certification",
         "xAxis": {
           "title": "Engine Types",
-          "categories": ["B6.7", "L9", "X12", "F3.8", "B4.5", "X15", "F2.8", "bharath", "G12"]
+          "categories": ["B6.7", "L9", "X12", "F3.8", "B4.5", "X15", "F2.8", "other", "G12"]
         },
         "yAxis": {
           "title": "Sales (in millions)",

@@ -1,1 +1,13 @@
-<p>widget works!</p>
+<!-- <h6>Basic mat-select</h6> -->
+<mat-form-field>
+  <mat-label>X-axis</mat-label>
+  <mat-select [(value)]="selectedValue" (selectionChange)="onSelectChange($event)">
+      @for (food of columnNames; track food) {
+      <mat-option [value]="food">{{ food }}</mat-option>
+      }
+
+  </mat-select>
+
+ 
+</mat-form-field>
+<div echarts [options]="chartOptions" class="chart-container"></div>
